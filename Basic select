@@ -1,0 +1,55 @@
+-- Weather Observation Station 3
+select distinct city from station 
+where id % 2 = 0;
+-- Weather Observation Station 6
+select city from station 
+where distinct city in ('a%', 'e%', 'i%', 'o%', 'u%');
+-- Weather Observation Station 7
+select distinct city from station 
+where distinct city in ('a%', 'e%', 'i%', 'o%', 'u%');
+-- Weather Observation Station 8
+select city from station 
+where distinct city in ('a%', 'e%', 'i%', 'o%', 'u%')
+and city in ('%a', '%e', '%i', '%o', '%u');
+-- Weather Observation Station 9
+select distinct city from station 
+where city not in ('a%', 'e%', 'i%', 'o%', 'u%');
+-- Weather Observation Station 10
+select distinct city from station 
+where city not in ('%a', '%e', '%i', '%o', '%u');
+-- Weather Observation Station 11
+select distinct city from station 
+where city not in ('a%', 'e%', 'i%', 'o%', 'u%')
+or city not in ('%a', '%e', '%i', '%o', '%u');
+-- Higher Than 75 Marks
+select name from students
+where marks > 75 order by right(name,3) asc, id asc;
+-- Employee Name
+select name from employee
+order by name asc;
+-- Employee Salaries
+select name from employee
+where salary > 2000 and months < 10
+order by employee_id asc;
+-- Type of Triangle
+select 
+case
+when a + b <= c or a + c <= b or b + c <= a then 'NO Triangle'
+when a = b and a = b then 'Equilateral'
+when a = b or a = c or b = c then 'Isosceles'
+else 'Scalene'
+end as triangle_sides
+from triangles;
+-- The PADS
+select concat(name,'(',upper(substring(occupation,1,1)),')') 
+from occupations order by name asc;
+select concat('There are a total of ', 
+count(occupation), ' ', lower(occupation), 's') as totals
+from occupations group by occupation order by totals;
+-- Binary Tree Nodes
+select 
+case
+when p then
+when  then
+else  then
+from bst;
