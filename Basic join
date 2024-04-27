@@ -1,0 +1,34 @@
+-- African Cities
+select name from city
+inner join country
+on city.countrycode=country.code
+where country.continent='Africa';
+
+-- Population Census
+select sum(city.population)
+from city
+inner join country
+on city.countrycode=country.code
+where country.continent='Asia';
+
+-- Average Population of Each Continent
+select country.continent, floor(avg(city.population))
+from city
+inner join country
+on city.countrycode=country.code
+group by country.continent;
+
+-- The Report
+select 
+case
+when grades.grade < 8 then null
+else students.name
+end as names,
+grades.grade, students.marks
+from grades
+inner join students
+on students.marks between grades.min_mark and grades.max_mark
+order by grades.grade desc,
+names asc, students.marks asc;
+
+--The Competitor
