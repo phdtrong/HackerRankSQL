@@ -31,4 +31,17 @@ on students.marks between grades.min_mark and grades.max_mark
 order by grades.grade desc,
 names asc, students.marks asc;
 
---The Competitor
+--The Ollivander's Inventory
+select w.id, p.age, w.coins_needed, w.power
+from wands w
+inner join wands_property p
+using(code) 
+where w.coins_needed = (
+    select min(w1.coins_needed)
+    from wands w1
+    inner join wands_property p1
+    using(code)
+    where w.power = w1.power and p1.age = p.age and p1.is_evil = 0 -- each non-evil wand of power and age
+)
+order by w.power desc, p.age desc
+;
